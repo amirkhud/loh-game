@@ -5,20 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кто ЛОХ?</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { text-align: center; font-family: Arial, sans-serif; background-color: #2E2E2E; color: white; }
-        .container { margin-top: 50px; }
-        #beer { width: 150px; }
-        .person { width: 100px; position: absolute; transition: all 1s ease-in-out; }
-        #winnerText { font-size: 20px; font-weight: bold; color: red; margin-top: 20px; display: none; }
+        .container { margin-top: 30px; position: relative; width: 100%; max-width: 400px; margin: auto; }
+        #beer { width: 120px; margin-top: 20px; }
+        .person { width: 80px; position: absolute; transition: all 1s ease-in-out; }
+        #person1 { top: 40%; left: 10%; }
+        #person2 { top: 20%; left: 40%; }
+        #person3 { top: 40%; left: 70%; }
+        #winnerText { font-size: 18px; font-weight: bold; color: red; margin-top: 20px; display: none; }
+        button { margin-top: 20px; padding: 10px 20px; font-size: 16px; background: #FFD700; border: none; cursor: pointer; }
+        button:hover { background: #FFC107; }
+        @media (max-width: 480px) {
+            .person { width: 60px; }
+            #beer { width: 100px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Кто ЛОХ? 🤡</h1>
         <img id="beer" src="beer.png" alt="Кружка пива">
-        <img id="person1" class="person" src="amir.png" style="top: 200px; left: 100px;">
-        <img id="person2" class="person" src="narbek.png" style="top: 100px; left: 250px;">
-        <img id="person3" class="person" src="jalil.png" style="top: 200px; left: 400px;">
+        <img id="person1" class="person" src="amir.png">
+        <img id="person2" class="person" src="narbek.png">
+        <img id="person3" class="person" src="jalil.png">
         <button onclick="startGame()">Кто ЛОХ?</button>
         <p id="winnerText">Лошара, сгоняй за пивом! 🍺</p>
     </div>
@@ -32,7 +42,7 @@
                 spinning = false;
                 winner = Math.floor(Math.random() * 3) + 1;
                 document.getElementById("winnerText").style.display = "block";
-                document.getElementById(`person${winner}`).style.top = "50px";
+                document.getElementById(`person${winner}`).style.top = "10%";
                 document.getElementById("winnerText").innerText = "Лошара, сгоняй за пивом! 🍺";
                 hideLosers();
             } else {
@@ -53,7 +63,7 @@
         function resetPositions() {
             for (let i = 1; i <= 3; i++) {
                 document.getElementById(`person${i}`).style.display = "block";
-                document.getElementById(`person${i}`).style.top = "200px";
+                document.getElementById(`person${i}`).style.top = "40%";
             }
         }
     </script>
