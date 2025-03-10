@@ -7,18 +7,19 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { text-align: center; font-family: Arial, sans-serif; background-color: #2E2E2E; color: white; }
-        .container { margin-top: 30px; position: relative; width: 100%; max-width: 400px; margin: auto; }
+        .container { max-width: 400px; margin: auto; position: relative; padding-top: 50px; }
         #beer { width: 120px; margin-top: 20px; }
-        .person { width: 80px; position: absolute; transition: all 1s ease-in-out; }
-        #person1 { top: 40%; left: 10%; }
-        #person2 { top: 20%; left: 40%; }
-        #person3 { top: 40%; left: 70%; }
-        #winnerText { font-size: 18px; font-weight: bold; color: red; margin-top: 20px; display: none; }
-        button { margin-top: 20px; padding: 10px 20px; font-size: 16px; background: #FFD700; border: none; cursor: pointer; }
+        .person { width: 80px; position: absolute; transition: all 0.8s ease-in-out; }
+        #person1 { top: 40%; left: 5%; }
+        #person2 { top: 20%; left: 35%; }
+        #person3 { top: 40%; left: 65%; }
+        #winnerText { font-size: 20px; font-weight: bold; color: red; margin-top: 20px; display: none; }
+        button { margin-top: 30px; padding: 12px 24px; font-size: 18px; background: #FFD700; border: none; border-radius: 10px; cursor: pointer; }
         button:hover { background: #FFC107; }
         @media (max-width: 480px) {
             .person { width: 60px; }
             #beer { width: 100px; }
+            button { width: 80%; font-size: 16px; }
         }
     </style>
 </head>
@@ -55,14 +56,14 @@
         function hideLosers() {
             for (let i = 1; i <= 3; i++) {
                 if (i !== winner) {
-                    document.getElementById(`person${i}`).style.display = "none";
+                    document.getElementById(`person${i}`).style.opacity = "0";
                 }
             }
         }
 
         function resetPositions() {
             for (let i = 1; i <= 3; i++) {
-                document.getElementById(`person${i}`).style.display = "block";
+                document.getElementById(`person${i}`).style.opacity = "1";
                 document.getElementById(`person${i}`).style.top = "40%";
             }
         }
