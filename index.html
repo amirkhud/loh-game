@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кто ЛОХ?</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: #2E2E2E; color: white; }
+        .container { margin-top: 50px; }
+        #beer { width: 150px; }
+        .person { width: 100px; position: absolute; transition: all 1s ease-in-out; }
+        #winnerText { font-size: 20px; font-weight: bold; color: red; margin-top: 20px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Кто ЛОХ? 🤡</h1>
+        <img id="beer" src="beer.png" alt="Кружка пива">
+        <img id="person1" class="person" src="amir.png" style="top: 200px; left: 100px;">
+        <img id="person2" class="person" src="narbek.png" style="top: 100px; left: 250px;">
+        <img id="person3" class="person" src="jalil.png" style="top: 200px; left: 400px;">
+        <button onclick="startGame()">Кто ЛОХ?</button>
+        <p id="winnerText">Лошара, сгоняй за пивом! 🍺</p>
+    </div>
+    
+    <script>
+        let spinning = true;
+        let winner = null;
+        
+        function startGame() {
+            if (spinning) {
+                spinning = false;
+                winner = Math.floor(Math.random() * 3) + 1;
+                document.getElementById("winnerText").style.display = "block";
+                document.getElementById(`person${winner}`).style.top = "50px";
+                document.getElementById("winnerText").innerText = "Лошара, сгоняй за пивом! 🍺";
+                hideLosers();
+            } else {
+                spinning = true;
+                resetPositions();
+                document.getElementById("winnerText").style.display = "none";
+            }
+        }
+
+        function hideLosers() {
+            for (let i = 1; i <= 3; i++) {
+                if (i !== winner) {
+                    document.getElementById(`person${i}`).style.display = "none";
+                }
+            }
+        }
+
+        function resetPositions() {
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`person${i}`).style.display = "block";
+                document.getElementById(`person${i}`).style.top = "200px";
+            }
+        }
+    </script>
+</body>
+</html>
